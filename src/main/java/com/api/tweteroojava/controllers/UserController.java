@@ -13,7 +13,7 @@ import com.api.tweteroojava.dtos.UserDto;
 import com.api.tweteroojava.models.UsersModel;
 import com.api.tweteroojava.services.UserService;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
+import jakarta.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600 )
 @RestController
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto){
+    public ResponseEntity<Object> saveUser(@RequestBody @Valid UserDto userDto){
         UsersModel usernModel = new UsersModel();
         BeanUtils.copyProperties(userDto, usernModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(usernModel));

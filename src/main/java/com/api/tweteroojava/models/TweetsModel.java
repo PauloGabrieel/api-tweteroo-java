@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "tweets")
-public class tweetsModel {
+public class TweetsModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
