@@ -1,5 +1,7 @@
 package com.api.tweteroojava.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.api.tweteroojava.models.TweetsModel;
@@ -16,5 +18,9 @@ public class TweetService {
 
     public TweetsModel save(TweetsModel tweetsModel) {
         return tweetRepository.save(tweetsModel);
+    }
+
+    public List<TweetsModel> getAll() {
+        return tweetRepository.findAll();
     }
 }
