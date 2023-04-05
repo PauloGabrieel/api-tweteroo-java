@@ -25,4 +25,7 @@ public class TweetService {
     public Page<TweetsModel> getAll(Pageable pageable) {
         return tweetRepository.findAll(pageable);
     }
+    public List<TweetsModel> getAllByUsername(String username) {
+        return tweetRepository.findByUsername(username);
+    }
 }
