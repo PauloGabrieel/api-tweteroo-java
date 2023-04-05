@@ -7,7 +7,7 @@ import lombok.Data;
 public class TweetDto {
     
     @NotBlank
-    public String userName;
+    public String username;
     
     @NotBlank
     public String avatar;

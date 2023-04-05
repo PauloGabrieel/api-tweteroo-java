@@ -16,7 +16,7 @@ public class UsersModel implements Serializable {
     private UUID id;
 
     @Column(nullable = false, length = 20)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String avatar;

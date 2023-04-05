@@ -20,7 +20,7 @@ public class TweetsModel {
     private UUID id;
 
     @Column(nullable = false)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String avatar;

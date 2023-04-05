@@ -1,8 +1,11 @@
 package com.api.tweteroojava.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,7 +40,16 @@ public class TweetController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TweetsModel>> getAllTwewts() {
-        return ResponseEntity.status(HttpStatus.OK).body(tweetService.getAll());
+    public ResponseEntity<List<TweetsModel>> getAllTwewts(@PageableDefault(page = 0, size= 5) @Valid Pageable pageable) {
+        List<TweetsModel> tweetsModels = new ArrayList<TweetsModel>();
+        List<TweetsModel> tweetsReverse = new ArrayList<TweetsModel>();
+        int size = 0;
+        tweetsModels = tweetService.getAll(pageable).getContent();
+        size = tweetsModels.size();
+
+        for (int i = size - 1; i >= 0 ; i--) {
+            tweetsReverse.add(tweetsModels.get(i));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(tweetsReverse);
     }
 }

@@ -15,7 +15,12 @@ public class UserService {
     }
 
     public UsersModel save( UsersModel usersModel) {
-        return userRepository.save(usersModel);
+        try {
+            return userRepository.save(usersModel);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        
     }
 
 }

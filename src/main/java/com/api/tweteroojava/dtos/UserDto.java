@@ -7,8 +7,10 @@ import lombok.Data;
 public class UserDto {
     
     @NotBlank
-    private String userName;
+    private String username;
     
     @NotBlank
     private String avatar;
+
+    
 }

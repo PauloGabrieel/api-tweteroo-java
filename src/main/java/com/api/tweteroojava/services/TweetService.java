@@ -2,6 +2,8 @@ package com.api.tweteroojava.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.api.tweteroojava.models.TweetsModel;
@@ -20,7 +22,7 @@ public class TweetService {
         return tweetRepository.save(tweetsModel);
     }
 
-    public List<TweetsModel> getAll() {
-        return tweetRepository.findAll();
+    public Page<TweetsModel> getAll(Pageable pageable) {
+        return tweetRepository.findAll(pageable);
     }
 }
